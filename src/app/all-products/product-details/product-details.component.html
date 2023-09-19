@@ -1,0 +1,29 @@
+<div *ngIf="card" class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-5">
+            <div class="card">
+                <img [src]="card.images[0]" class="card-img-top" [alt]="card.brand">
+                <div class="card-body">
+                    <h5 class="card-title">{{card.title}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{card.category}}</li>
+                    <li class="list-group-item" [ngClass]="{'bg-success': card.stock,'bg-danger':!card.stock}">
+                        {{card.stock | stock}}</li>
+                    <li class="list-group-item"
+                        [ngClass]="{'text-primary': card.price,'text-danger':!card.price}">
+                        {{card.price | price}}</li>
+                    <li class="list-group-item" [ngClass]="['bg-danger']">
+                        {{card.createdAt | date:'MMM YYYY'}}</li>
+                </ul>
+                <div class="card-body">
+                    <a class="card-link btn btn-success" (click)="addProdutToCart(card)" [class.disabled]="!card.stock">add to cart</a>
+
+                    <!-- <app-add-to-cart [myCard] = 'card' (emitToParent)="add($event)"></app-add-to-cart> -->
+
+                    <!-- <div class="btn btn-primary" (click)="add()">add</div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>

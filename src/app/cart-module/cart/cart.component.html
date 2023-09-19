@@ -1,0 +1,29 @@
+<p>cart works!</p>
+
+<div class="container">
+    <div class="h1">my cart</div>
+    <div class="h5">you have {{card.length}} item in your cart</div>
+    <div class="btn btn-danger" (click)="removeAllProduct()"> clear your cart</div>
+    <div class="row mt-5 text-center">
+        <div class="col">number</div>
+        <div class="col">name</div>
+        <div class="col">price</div>
+        <div class="col">quantity</div>
+        <div class="col">total</div>
+        <div class="col">delete</div>
+    </div>
+    <div class="row mt-5 text-center" *ngFor="let item of card, let i = index">
+        <div class="col bg-success">{{i+1}}</div>
+        <div class="col bg-danger">{{item.title}}</div>
+        <img class="col bg-danger" src="{{item.images[0]}}" height="45px">
+
+        <div class="col bg-success">{{item.category}}</div>
+        <div class="col">{{item.description}}</div>
+        <div class="col btn btn-danger" (click)="removeProduct(item)">delete</div>
+    </div>
+    <div class="row mt-5 text-center">
+        <div class="col">total 1500</div>
+        <div class="col btn btn-success">order now</div>
+
+    </div>
+</div>
