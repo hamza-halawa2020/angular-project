@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { Product } from '../../product';
 import { CartService } from 'src/app/services/cart.service';
 
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -43,9 +41,5 @@ export class ProductsComponent {
   details(id: number) {
     this.router.navigate(['product', id]);
   }
-
-  // addProdutToCart(item: any) {
-  //   this.cartApi.addProductToCart(item)
-  // }
 
 }

@@ -31,12 +31,19 @@ export class CartService {
   }
 
   addProductToCart(myProduct: any) {
+  // Check if the product already exists in the cart
+  const productAlreadyInCart = this.cartDataList.some((product) => product.id === myProduct.id);
+
+  if (productAlreadyInCart) {
+    alert('Product is already in the cart.');
+  } else {
     this.cartDataList.push(myProduct);
     this.productList.next(this.cartDataList);
     this.getAll();
-    console.log('hamza',this.cartDataList);
-    
+    console.log('hamza', this.cartDataList);
   }
+}
+
 
   getAll() {
     let Gtotal = 0;
