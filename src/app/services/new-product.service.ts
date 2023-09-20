@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +7,15 @@ import { environment } from 'src/environments/environment';
 export class NewProductService {
 
   constructor(private http: HttpClient) { }
-
+url:string = `https://dummyjson.com/products/`;
   getAllProductsssss() {
-    return this.http.get(`https://dummyjson.com/products/`);
+    return this.http.get(this.url);
   }
   getProductsssssById(id: number) {
-    return this.http.get(`https://dummyjson.com/products/${id}`);
+    return this.http.get(`${this.url}${id}`);
   }
-  getProductsssssByKeyWord(keyWord: any) {
-    return this.http.get(`https://dummyjson.com/products/${keyWord}`);
-  }
+  // getProductsssssByKeyWord(keyWord: any) {
+  //   return this.http.get(`${this.url}${keyWord}`);
+  // }
 }
 

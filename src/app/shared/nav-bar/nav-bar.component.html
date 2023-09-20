@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="'/'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">products</a>
     <div>
-      <span class="bg-danger p-2 rounded m-2">{{totalNumber}}</span>
+      <span class="bg-danger p-2 rounded m-2" *ngIf="totalNumber > 0">{{totalNumber}}</span>
       <a class="navbar-brand" [routerLink]="'/cart'" routerLinkActive="active" >cart</a>
     </div>
     <a class="navbar-brand" [routerLink]="'/login'" routerLinkActive="active">login</a>
