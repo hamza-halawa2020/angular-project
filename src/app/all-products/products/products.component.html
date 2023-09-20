@@ -1,32 +1,48 @@
-<p>products works!</p>
-<!-- <app-card></app-card> -->
 
-
-<div class="container text-center w-100" *ngIf="loading" ><app-loaders></app-loaders>
+<div class="container text-center w-100" *ngIf="loading"><app-loaders></app-loaders>
 </div>
-<div *ngIf="!loading" class="container">
+<div *ngIf="!loading" class="container mb-5">
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4 mt-5" *ngFor="let cards of products">
             <div class="card">
-                <img [src]="cards.images[0]" class="card-img-top" [alt]="cards.brand">
+                <img height="350px" [src]="cards.images[0]" class="card-img-top" [alt]="cards.brand">
                 <div class="card-body">
                     <h5 class="card-title">{{cards.title}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{cards.category}}</li>
+                    <li class="list-group-item">
+                        {{cards.category}}
+                    </li>
                     <li class="list-group-item" [ngClass]="{'bg-success': cards.stock,'bg-danger':!cards.stock}">
-                        {{cards.stock | stock}}</li>
-                    <li class="list-group-item" [ngClass]="{'text-primary': cards.price,'text-danger':!cards.price}">
-                        {{cards.price | price}}</li>
-                    <li class="list-group-item" [ngClass]="['bg-danger']">
-                        {{cards.createdAt | date:'MMM YYYY'}}</li>
+                        {{cards.stock | stock}}
+                    </li>
+                    <li class="list-group-item">
+                        <span style="float: left;" [ngClass]="{'text-primary': cards.price,'text-danger':!cards.price}">
+                            {{cards.price | price}} 
+                        </span>
+                        <span style="float: right;">
+                            <span style="float: right;"[ngClass]="{'text-danger': cards.price,'text-primary':!cards.price}">
+                                {{cards.discountPercentage | percent}}
+                            </span>
+
+                        </span>
+                        
+                    </li>
+
+                    <!-- <li class="list-group-item" [ngClass]="['bg-danger']">
+                        {{cards.createdAt | date:'MMM YYYY'}}
+                    </li> -->
                 </ul>
                 <div class="card-body">
                     <!-- <a class="card-link btn btn-success" (click)="addProdutToCart(card)" [class.disabled]="!card.stock">add to cart</a> -->
 
-                    <a class="card-link btn btn-primary" (click)="details(cards.id)">more</a>
+                    <a class="card-link btn btn-primary" (click)="details(cards.id)">More Details</a>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+    <footer>
+        <div class="bg-light text-center">made with ❤ by hamza halawa</div>
+    </footer>

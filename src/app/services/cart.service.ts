@@ -32,6 +32,7 @@ export class CartService {
       this.getAll();
       console.log('hamza', this.cartDataList);
     }
+
   }
 
 
@@ -61,25 +62,6 @@ export class CartService {
     return this.counterCart.asObservable()
   }
 
-  // getTotal() {
-  //   const myCart = this.cart.getValue();
-  //   let price = 0;
-  //   myCart.forEach((myProduct) => {
-  //     price += myProduct.price * myProduct.quantity;
-  //   })
-  //   this.total.next(price)
-  //   return this.total.asObservable()
-  // }
-
-  // addToCart(myProduct: Product) {
-
-  //   const myCart = this.cart.getValue();
-  //   myCart.push({...myProduct, quantity: 1});
-  //   this.cart.next(myCart);
-  //   this.counterCart.next(myCart.length);
-
-  //   this.getTotal();
-  // }
 
 }
 

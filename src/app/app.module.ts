@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 import { AllProductsModule } from './all-products/all-products.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PercentPipe } from './pipes/percent.pipe';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     StockPipe,
     ProductDetailsComponent,
     PricePipe,
-    ProductsComponent
+    ProductsComponent,
+    PercentPipe
   ],
   imports: [
     BrowserModule,

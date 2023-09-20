@@ -7,17 +7,36 @@
                     <h5 class="card-title">{{card.title}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{card.category}}</li>
+                    <li class="list-group-item">
+                        {{card.category}}
+                    </li>
+                    <li class="list-group-item text-center">
+                        {{card.description}}
+                    </li>
                     <li class="list-group-item" [ngClass]="{'bg-success': card.stock,'bg-danger':!card.stock}">
-                        {{card.stock | stock}}</li>
-                    <li class="list-group-item"
-                        [ngClass]="{'text-primary': card.price,'text-danger':!card.price}">
-                        {{card.price | price}}</li>
-                    <li class="list-group-item" [ngClass]="['bg-danger']">
-                        {{card.createdAt | date:'MMM YYYY'}}</li>
+                        {{card.stock | stock}}
+                    </li>
+                    <li class="list-group-item">
+                        <span style="float: left;" [ngClass]="{'text-primary': card.price,'text-danger':!card.price}">
+                            {{card.price | price}}
+                        </span>
+                        <span style="float: right;">
+                            <span style="float: right;"
+                                [ngClass]="{'text-danger': card.price,'text-primary':!card.price}">
+                                {{card.discountPercentage | percent}}
+                            </span>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        Brand : {{card.brand}}
+                    </li>
+                    <li class="list-group-item">
+                        Rating : {{card.rating}}
+                    </li>
                 </ul>
                 <div class="card-body">
-                    <a class="card-link btn btn-success" (click)="addProdutToCart(card)" [class.disabled]="!card.stock">add to cart</a>
+                    <a class="card-link btn btn-success" (click)="addProdutToCart(card)"
+                        [class.disabled]="!card.stock">add to cart</a>
                 </div>
             </div>
         </div>
