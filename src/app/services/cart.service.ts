@@ -8,18 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CartService {
   private counterCart = new BehaviorSubject<number>(0);
-  // private total = new BehaviorSubject<number>(0);
   private productList = new BehaviorSubject<Product[]>([]);
   cartDataList: Product[] = [];
   constructor(private http: HttpClient) { }
-
-  // getCartVal() {
-  //   return this.cart.asObservable()
-  // }
-
-  // setCartVal(newVal: number) {
-  //   this.cart.next(newVal);
-  // }
 
   getCart() {
     return this.productList.asObservable()
@@ -31,18 +22,17 @@ export class CartService {
   }
 
   addProductToCart(myProduct: any) {
-  // Check if the product already exists in the cart
-  const productAlreadyInCart = this.cartDataList.some((product) => product.id === myProduct.id);
+    const productAlreadyInCart = this.cartDataList.some((product) => product.id === myProduct.id);
 
-  if (productAlreadyInCart) {
-    alert('Product is already in the cart.');
-  } else {
-    this.cartDataList.push(myProduct);
-    this.productList.next(this.cartDataList);
-    this.getAll();
-    console.log('hamza', this.cartDataList);
+    if (productAlreadyInCart) {
+      alert('Product is already in the cart.');
+    } else {
+      this.cartDataList.push(myProduct);
+      this.productList.next(this.cartDataList);
+      this.getAll();
+      console.log('hamza', this.cartDataList);
+    }
   }
-}
 
 
   getAll() {
@@ -57,6 +47,8 @@ export class CartService {
       if (myProduct.id === a.id) {
         this.cartDataList.splice(index, 1)
       }
+      this.productList.next(this.cartDataList)
+
     })
   }
 
