@@ -44,22 +44,18 @@ export class CartComponent {
   //   return this.totalPaice;
   // }
 
-    calculateTotalAllProduct(){
-
-
+  calculateTotalAllProduct() {
+    let total = 0;
+  
     for (const item of this.card) {
-      // if (item && item.price !== undefined && item.price >= 0) {
-      //   this.totalPaice += item.price * item.quantity!;
-      // }
-
-        item && item.quantity !== undefined && item.quantity >= 0
-          return item.price * item.quantity!;
-              
+      if (item && item.quantity !== undefined && item.quantity >= 0) {
+        total += item.price * item.quantity;
+      }
     }
-
-    return this.totalPaice;
+  
+    return total;
   }
-
+  
 
   constructor(
     private cartApi: CartService
