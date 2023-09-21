@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NewProductService } from 'src/app/services/new-product.service';
-import { Router } from '@angular/router';  
+import { Router } from '@angular/router';
 import { Product } from '../../product';
-import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-products',
@@ -12,18 +12,15 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductsComponent {
   constructor(
     private service: NewProductService,
-    private cartApi: CartService,
-    private router: Router 
+    private router: Router
   ) { }
-  card!: any;
   products: any = [];
-  loading :boolean = false;
-  getAllProducts!: Product[] ;
+  loading: boolean = false;
 
   ngOnInit() {
     this.getProducts();
   }
-  
+
   getProducts() {
     this.loading = true;
     this.service.getAllProductsssss().subscribe(
@@ -43,3 +40,6 @@ export class ProductsComponent {
   }
 
 }
+
+
+

@@ -27,12 +27,8 @@ export class ProductDetailsComponent {
     this.linkService.getProductsssssById(productId).subscribe((res) => {
       console.log(res);
       this.card = res;
-      Object.assign(this.card, { quantity: 1, total: this.card.price });
+      Object.assign(this.card, { quantity: 1});
     });
-
-
-
-
 
   }
   addProdutToCart(item: any) {
