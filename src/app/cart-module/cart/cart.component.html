@@ -1,39 +1,58 @@
 <div class="container" *ngIf="card.length > 0; else emptyCart">
-    <div class="h1">my cart</div>
-    <div class="h5">you have {{card.length}} item in your cart</div>
-    <div class="btn btn-danger" (click)="removeAllProduct()"> clear your cart</div>
-    <div class="row mt-2 text-center">
-        <div class="col">number</div>
-        <div class="col">name</div>
-        <div class="col">image</div>
-        <div class="col">quantity</div>
-        <div class="col">total</div>
-        <div class="col">delete</div>
+    <div class="container text-center">
+        <div class="h1">Shopping Cart</div>
+        <div class="h5">you have {{card.length}} item in your cart</div>
+        <div class="btn btn-danger" (click)="removeAllProduct()"> clear your cart</div>
     </div>
-    <div class="row mt-5 text-center" *ngFor="let item of card, let i = index">
-        <div class="col bg-success">{{i+1}}</div>
-        <div class="col bg-danger">{{item.title}}</div>
-        <img class="col bg-danger" src="{{item.images[0]}}" style="height: 50px;">
-        <div class="col">
-            <div class="row">
-                <div class="col btn btn-success">+</div>
-                <input class="col" type="number">
-                <div class="col btn btn-danger">-</div>
-            </div>
-        </div>
-        <div class="col">total</div>
-        <div class="col btn btn-danger" (click)="removeProduct(item)">delete</div>
-    </div>
+    <table class="table table-bordered mt-5 text-center">
+        <thead>
+            <tr>
+                <th>N</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let item of card, let i = index" style="vertical-align: middle;">
+                <td>{{i+1}}</td>
+                <td><img src="{{item.images[0]}}" alt="Product Image" class="rounded border" style="height: 45px;"></td>
+                <td>{{item.title}}</td>
+                <td>{{item.price | price}}</td>
+                <td><input type="number" class="rounded"></td>
+                <td>{{item.price * 2}}</td>
+                <td><button class="btn btn-danger" (click)="removeProduct(item)">Delete</button></td>
+            </tr> -->
+
+            <tr *ngFor="let item of card, let i = index" style="vertical-align: middle;">
+                <td>{{i+1}}</td>
+                <td><img src="{{item.images[0]}}" alt="Product Image" class="rounded border" style="height: 45px;"></td>
+                <td>{{item.title}}</td>
+                <td>{{item.price | price}}</td>
+                <td>
+                    <input type="number" class="rounded" [(ngModel)]="item.quantity"
+                        (input)="updateTotal(item.price, item.quantity)">
+                </td>
+                <td>{{calculateTotal(item) | price}}</td>
+                <td><button class="btn btn-danger" (click)="removeProduct(item)">Delete</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
     <div class="row mt-5 text-center">
-        <div class="col">total 1500</div>
-        <div class="col btn btn-success">order now</div>
-
+        <div class="col">Total: {{calculateTotalAllProduct() | price}}</div>
+        <div class="col"><button class="btn btn-success">Order Now</button></div>
     </div>
-
 </div>
 
 <ng-template #emptyCart>
     <div class="container text-center">
-        <h1>Your cart is empty.</h1>
+        <h1 class="mt-5">Your cart is empty.</h1>
+        <a class="h1 mt-5" [routerLink]="'/'">CONTINUE TO SHOPPING...</a>
+
     </div>
 </ng-template>

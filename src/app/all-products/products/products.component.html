@@ -1,6 +1,6 @@
-
-<div class="container text-center w-100" *ngIf="loading"><app-loaders></app-loaders>
-</div>
+<div class="container" *ngIf="loading">
+    <app-loaders></app-loaders>
+    </div>
 <div *ngIf="!loading" class="container mb-5">
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4 mt-5" *ngFor="let cards of products">
@@ -18,15 +18,16 @@
                     </li>
                     <li class="list-group-item">
                         <span style="float: left;" [ngClass]="{'text-primary': cards.price,'text-danger':!cards.price}">
-                            {{cards.price | price}} 
+                            {{cards.price | price}}
                         </span>
                         <span style="float: right;">
-                            <span style="float: right;"[ngClass]="{'text-danger': cards.price,'text-primary':!cards.price}">
+                            <span style="float: right;"
+                                [ngClass]="{'text-danger': cards.price,'text-primary':!cards.price}">
                                 {{cards.discountPercentage | percent}}
                             </span>
 
                         </span>
-                        
+
                     </li>
 
                     <!-- <li class="list-group-item" [ngClass]="['bg-danger']">
@@ -42,7 +43,7 @@
             </div>
         </div>
     </div>
-    </div>
-    <footer>
-        <div class="bg-light text-center">made with ❤ by hamza halawa</div>
-    </footer>
+</div>
+<footer>
+    <div class="bg-light text-center">made with ❤ by hamza halawa</div>
+</footer>

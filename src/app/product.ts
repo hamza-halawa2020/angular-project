@@ -10,5 +10,6 @@ export interface Product {
     category: string,
     thumbnail: string,
     images: string[],
+    quantity?: number,
     createdAt: string | Date
 }

@@ -10,8 +10,56 @@ import { CartService } from 'src/app/services/cart.service';
 
 export class CartComponent {
 
-  allProduct:any= 0;
+  allProduct: any = 0;
   card: Product[] = [];
+  totalPaice: any = 0;
+
+
+
+  updateTotal(price: number, quantity: number | undefined) {
+    if (quantity !== undefined && quantity >= 0) {
+      const total = price * quantity;
+      console.log('Total:', total);
+    }
+  }
+
+  calculateTotal(item: any){
+    if (item && item.quantity !== undefined && item.quantity >= 0) {
+      return item.price * item.quantity;
+    }
+    return 0;
+  }
+
+
+
+  // calculateTotalAllProduct(){
+
+
+  //   for (const item of this.card) {
+  //     if (item && item.price !== undefined && item.price >= 0) {
+  //       this.totalPaice += item.price * item.quantity!;
+  //     }
+  //   }
+
+  //   return this.totalPaice;
+  // }
+
+    calculateTotalAllProduct(){
+
+
+    for (const item of this.card) {
+      // if (item && item.price !== undefined && item.price >= 0) {
+      //   this.totalPaice += item.price * item.quantity!;
+      // }
+
+        item && item.quantity !== undefined && item.quantity >= 0
+          return item.price * item.quantity!;
+              
+    }
+
+    return this.totalPaice;
+  }
+
 
   constructor(
     private cartApi: CartService
@@ -28,16 +76,15 @@ export class CartComponent {
     this.cartApi.getCart().subscribe((data) => {
       this.card = data;
       this.allProduct = this.cartApi.getcounterCart()
-      // this.getAllProducts = Object.values(data)[0]
     })
 
   }
 
-  removeProduct(item:any){
+  removeProduct(item: any) {
     this.cartApi.removeDate(item)
   }
 
-  removeAllProduct(){
+  removeAllProduct() {
     this.cartApi.removeAllDate()
   }
 }
