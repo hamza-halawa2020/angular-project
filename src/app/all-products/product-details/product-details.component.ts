@@ -1,17 +1,15 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../product';
 import { NewProductService } from 'src/app/services/new-product.service';
 import { CartService } from 'src/app/services/cart.service';
 
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent {
-
   card!: any;
   getAllProducts: Product[] = [];
 
@@ -19,7 +17,7 @@ export class ProductDetailsComponent {
     private activeRoute: ActivatedRoute,
     private linkService: NewProductService,
     private cartApi: CartService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const productId = +this.activeRoute.snapshot.params['id'];
@@ -27,17 +25,10 @@ export class ProductDetailsComponent {
     this.linkService.getProductsssssById(productId).subscribe((res) => {
       console.log(res);
       this.card = res;
-      Object.assign(this.card, { quantity: 1});
+      Object.assign(this.card, { quantity: 1 });
     });
-
   }
   addProdutToCart(item: any) {
-    this.cartApi.addProductToCart(item)
+    this.cartApi.addProductToCart(item);
   }
-
-
-
-
 }
-
-

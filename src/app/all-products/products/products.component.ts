@@ -3,17 +3,13 @@ import { NewProductService } from 'src/app/services/new-product.service';
 import { Router } from '@angular/router';
 import { Product } from '../../product';
 
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  constructor(
-    private service: NewProductService,
-    private router: Router
-  ) { }
+  constructor(private service: NewProductService, private router: Router) {}
   products: any = [];
   loading: boolean = false;
 
@@ -28,9 +24,9 @@ export class ProductsComponent {
         this.products = Object.values(res)[0];
         this.loading = false;
       },
-      err => {
+      (err) => {
         console.log(err);
-        alert("An error occurred while fetching products.");
+        alert('An error occurred while fetching products.');
       }
     );
   }
@@ -38,8 +34,4 @@ export class ProductsComponent {
   details(id: number) {
     this.router.navigate(['product', id]);
   }
-
 }
-
-
-

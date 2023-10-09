@@ -5,34 +5,31 @@ import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
-
 export class CartComponent {
-
   allProduct: any = 0;
   card: Product[] = [];
   totalPaice: any = 0;
 
-  constructor(
-    private cartApi: CartService
-  ) { }
+  constructor(private cartApi: CartService) {}
 
   ngOnInit(): void {
     this.getCartProducts();
   }
 
   getCartProducts() {
-
     this.cartApi.getCart().subscribe((data) => {
       this.card = data;
-      this.allProduct = this.cartApi.getcounterCart()
-    })
-
+      this.allProduct = this.cartApi.getcounterCart();
+    });
   }
 
   calculateTotal(item: any) {
     if (item && item.quantity !== undefined && item.quantity >= 0) {
+      if (item.quantity > item.stock) {
+        alert('there is no stock with this quantity');
+      }
       return item.price * item.quantity;
     }
     return 0;
@@ -44,8 +41,6 @@ export class CartComponent {
       console.log('Total:', total);
     }
   }
-
-
 
   calculateTotalAllProduct() {
     let total = 0;
@@ -60,10 +55,10 @@ export class CartComponent {
   }
 
   removeProduct(item: any) {
-    this.cartApi.removeDate(item)
+    this.cartApi.removeDate(item);
   }
 
   removeAllProduct() {
-    this.cartApi.removeAllDate()
+    this.cartApi.removeAllDate();
   }
 }

@@ -21,7 +21,6 @@ import { AllProductsModule } from './all-products/all-products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PercentPipe } from './pipes/percent.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +34,7 @@ import { PercentPipe } from './pipes/percent.pipe';
     ProductDetailsComponent,
     PricePipe,
     ProductsComponent,
-    PercentPipe
+    PercentPipe,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +44,9 @@ import { PercentPipe } from './pipes/percent.pipe';
     NgbModule,
     AllProductsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
